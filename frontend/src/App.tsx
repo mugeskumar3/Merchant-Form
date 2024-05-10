@@ -98,6 +98,8 @@ const App: React.FC = () => {
             return newData;
           });
           setEditIndex(null);
+          window.location.reload();
+
         })
         .catch((error) => {
           console.error("Error updating data:", error);
