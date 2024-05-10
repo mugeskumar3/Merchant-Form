@@ -52,7 +52,6 @@ const App: React.FC = () => {
   const [editIndex, setEditIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    // Fetch initial data using Axios when the component mounts
     axios.get("http://localhost:5000/api/data")
       .then((response) => {
         setTableData(response.data);
@@ -108,6 +107,7 @@ const App: React.FC = () => {
         .then((response) => {
           console.log("Data added successfully:", response.data);
           setTableData((prevData) => [...prevData, response.data]);
+          window.location.reload();
         })
         .catch((error) => {
           console.error("Error adding data:", error);
@@ -116,7 +116,6 @@ const App: React.FC = () => {
   
     setFormData(initialFormData);
   
-    // Fetch updated data after submitting or updating
     axios.get("http://localhost:5000/api/data")
       .then((response) => {
         setTableData(response.data);

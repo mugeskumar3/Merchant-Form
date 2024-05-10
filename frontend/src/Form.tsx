@@ -55,7 +55,6 @@ const Form: React.FC<FormProps> = ({
   }, [editIndex, tableData, setFormData]);
 
   const handleNavigation = () => {
-    // Navigate to the table view programmatically
     navigate("/table");
   };
 

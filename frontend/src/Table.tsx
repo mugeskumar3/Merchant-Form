@@ -40,12 +40,10 @@ const Table: React.FC<TableProps> = ({
 
   const handleEdit = (index: number) => {
     onEdit(index);
-    // Navigate to the form view programmatically
     navigate("/");
   };
 
   const handleDelete = (index: number) => {
-    // Use the delete API endpoint to remove the data from the server
     const idToDelete = data[index]._id;
     axios
       .delete(`http://localhost:5000/api/data/${idToDelete}`)
@@ -53,7 +51,8 @@ const Table: React.FC<TableProps> = ({
         console.log("Data deleted successfully:", response.data);
         const updatedData = [...data];
         updatedData.splice(index, 1);
-        onDataChange(updatedData); // Update the state immediately
+        onDataChange(updatedData); 
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error deleting data:", error);
